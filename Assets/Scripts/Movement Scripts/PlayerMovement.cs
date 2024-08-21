@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,9 +6,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     public float movementSpeed = 0.1f;
 
-    bool jumpExecuted;
     public float gravity = 9.8f;
-    public float jumpSpeed = 20;
+    public float jumpSpeed = 5;
     public float verticalSpeed = 0;
 
     public void IAMovement(InputAction.CallbackContext context)
@@ -20,40 +17,29 @@ public class PlayerMovement : MonoBehaviour
 
     public void IAJump(InputAction.CallbackContext context)
     {
-        if(context.started == true)
+        if(context.started == true && GroundCheck())
         {
-            jumpExecuted = true;
-            Debug.Log("IA Debug Jump = " + jumpExecuted);
-        }
-        else
-        {
-            jumpExecuted = false;
-            Debug.Log("IA Debug Jump = " + jumpExecuted);
+            verticalSpeed = jumpSpeed;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        verticalSpeed = (verticalSpeed - gravity) * Time.deltaTime;
-
-        if (GroundCheck() == true && jumpExecuted == false)
+        if(GroundCheck() == true && verticalSpeed <= 0)
         {
-            Debug.Log("Jump Condition Failed");
             verticalSpeed = 0;
         }
-
-        if(GroundCheck() == true && jumpExecuted == true)
+        else
         {
-            Debug.Log("Jump Condition Successful");
-            verticalSpeed = jumpSpeed;
+            verticalSpeed = verticalSpeed - gravity * Time.deltaTime;
         }
 
-        transform.Translate(movementInput.x * movementSpeed * Time.deltaTime, verticalSpeed, movementInput.y * movementSpeed * Time.deltaTime);
+        transform.Translate(movementInput.x * movementSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, movementInput.y * movementSpeed * Time.deltaTime);
     }
 
     public bool GroundCheck()
     {
-        return Physics.Raycast(transform.position, transform.up * -1, 1);
+        return Physics.Raycast(transform.position, transform.up * -1, 1.1f);
     }
 }

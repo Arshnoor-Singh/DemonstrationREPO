@@ -546,7 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.1
   gravity: 9.8
-  jumpSpeed: 20
+  jumpSpeed: 5
   verticalSpeed: 0
 --- !u!1 &1783573993
 GameObject:
