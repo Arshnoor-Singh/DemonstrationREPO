@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 movementInput;
     public float movementSpeed = 0.1f;
+    public Cinemachine.CinemachineVirtualCamera playerCamera;
 
     public float gravity = 9.8f;
     public float jumpSpeed = 5;
@@ -17,9 +18,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void IAJump(InputAction.CallbackContext context)
     {
-        if(context.started == true && GroundCheck())
+        if(context.started == true && GroundCheck() == true)
         {
             verticalSpeed = jumpSpeed;
+        }
+    }
+
+    public void IAInteract(InputAction.CallbackContext context)
+    {
+        if(context.started == true)
+        {
+            InteractionRayCast();
         }
     }
 
@@ -41,5 +50,16 @@ public class PlayerMovement : MonoBehaviour
     public bool GroundCheck()
     {
         return Physics.Raycast(transform.position, transform.up * -1, 1.1f);
+    }
+
+    public void InteractionRayCast()
+    {
+        Vector3 CameraDirection = playerCamera.transform.forward;
+
+        Ray InteractionRay = new Ray(transform.position, CameraDirection);
+
+        RaycastHit targetInfo;
+
+        Physics.Raycast(InteractionRay, out targetInfo, 5f);
     }
 }
