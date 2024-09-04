@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 245789632}
   - component: {fileID: 245789633}
-  - component: {fileID: 245789634}
   - component: {fileID: 245789635}
+  - component: {fileID: 245789634}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -175,19 +175,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 245789631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 1.17, y: 0.82, z: 0}
-  VerticalArmLength: 0.4
-  CameraSide: 1
-  CameraDistance: 3.34
-  CameraCollisionFilter:
-    serializedVersion: 2
-    m_Bits: 0
-  IgnoreTag: 
-  CameraRadius: 0.2
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 1.08, z: -5.12}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+  m_Heading:
+    m_Definition: 2
+    m_VelocityFilterStrength: 4
+    m_Bias: 0
+  m_RecenterToTargetHeading:
+    m_enabled: 1
+    m_WaitTime: 1.55
+    m_RecenteringTime: 2.01
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_XAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: Mouse X
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_LegacyRadius: 3.4028235e+38
+  m_LegacyHeightOffset: 3.4028235e+38
+  m_LegacyHeadingBias: 3.4028235e+38
+  m_HeadingIsSlave: 0
 --- !u!114 &245789635
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -200,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0.78, y: 0.56, z: 0}
+  m_TrackedObjectOffset: {x: 1.01, y: 0.51, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -225,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419962391}
   - component: {fileID: 419962390}
+  - component: {fileID: 419962392}
   m_Layer: 0
   m_Name: Virtual Camera 1
   m_TagString: Untagged
@@ -274,14 +307,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419962389}
-  m_LocalRotation: {x: 0.096588895, y: -0.05781482, z: 0.005620081, w: 0.99362797}
-  m_LocalPosition: {x: 1.17, y: 18.619999, z: -3.34}
+  m_LocalRotation: {x: 0.05411156, y: 0.09708483, z: -0.0052862386, w: 0.99379003}
+  m_LocalPosition: {x: 0, y: 18.48, z: -5.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 245789632}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &419962392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419962389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 6208056208302774391, guid: 0db80a12203c4f74290d7e437bcf57d8, type: 3}
+  ZAxis: {fileID: 6208056208302774391, guid: 0db80a12203c4f74290d7e437bcf57d8, type: 3}
 --- !u!1 &540020955
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +697,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9e224e78-26ec-4a35-a398-8f54d71b5b9b
     m_ActionName: Walking/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dff8c171-5ff5-4714-ba1f-8c40ecfa75a5
+    m_ActionName: Walking/MouseLook[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Walking
@@ -667,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   playerCamera: {fileID: 419962390}
-  rayLength: 5
+  rayLength: 15
   gravity: 9.8
   jumpSpeed: 5
   verticalSpeed: 0
@@ -946,8 +999,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100458868}
-  m_LocalRotation: {x: 0.096588895, y: -0.05781482, z: 0.005620081, w: 0.99362797}
-  m_LocalPosition: {x: 1.17, y: 18.619999, z: -3.34}
+  m_LocalRotation: {x: 0.05411156, y: 0.09708483, z: -0.0052862386, w: 0.99379003}
+  m_LocalPosition: {x: 0, y: 18.48, z: -5.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
