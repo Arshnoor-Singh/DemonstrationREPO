@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 movementInput;
     public float movementSpeed = 0.1f;
-    public Cinemachine.CinemachineVirtualCamera playerCamera;
+    public Cinemachine.CinemachineFreeLook playerCamera;
     public float rayLength = 5f;
 
     public float gravity = 9.8f;
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Storing the value of the direction in which the camera is looking in a variable named CameraDirection
         // The type of this variable is Vector3
-        Vector3 CameraDirection = playerCamera.transform.forward;
+        Vector3 CameraDirection = Camera.main.transform.forward;
 
         // Storing the information about where our ray starts, and in which direction it needs to go, inside a variable called Interaction Ray
         // The type of this variable is Ray
@@ -95,4 +95,20 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawLine(playerCamera.transform.position, playerCamera.transform.position + (CameraDirection * rayLength), Color.magenta, 2f);
         }
     }
+
+    public void Function1()
+    {
+
+    }
+
+    public void Function2(bool isTrue)
+    {
+        
+    }
+
+    public void Function3()
+    {
+
+    }
+    
 }
